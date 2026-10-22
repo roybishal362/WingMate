@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { liveStore } from "@/lib/store";
-import { runInfo, runItems } from "@/lib/apify";
+import { runInfo, runItems, startInstagramPosts } from "@/lib/apify";
 import { buildPerson, fetchAsDataUrl } from "@/lib/pipeline";
 
 export const maxDuration = 60;
@@ -35,6 +35,22 @@ export async function POST(_: Request, { params }: { params: Promise<{ id: strin
   if (!liItem) return fail(`LinkedIn: ${String(liItems[0]?.error ?? "profile not found")}`);
   if (!igItem) return fail("Instagram profile not found.");
   if (igItem.private) return fail("This Instagram account is private. Only public Instagram profiles can be used.");
+
+  // Instagram sometimes refuses the timeline to the profile scraper: fetch posts with apify/instagram-scraper instead.
+  const postCount = Array.isArray(igItem.latestPosts) ? (igItem.latestPosts as unknown[]).length : 0;
+  if (!postCount && Number(igItem.postsCount) > 0) {
+    if (!p.apify!.igPostsRunId) {
+      p.apify!.igPostsRunId = await startInstagramPosts(p.igUser);
+      await store.savePerson(p);
+      return NextResponse.json({ person: p, li: li.status, ig: "FETCHING POSTS" });
+    }
+    const pr = await runInfo(p.apify!.igPostsRunId);
+    if (!DONE.includes(pr.status) && !FAILED.includes(pr.status)) return NextResponse.json({ person: p, li: li.status, ig: "FETCHING POSTS" });
+    if (DONE.includes(pr.status)) {
+      const posts = await runItems(p.apify!.igPostsRunId);
+      igItem.latestPosts = posts.filter((x) => !x.ownerUsername || String(x.ownerUsername).toLowerCase() === p.igUser).slice(0, 12);
+    }
+  }
 
   const built = buildPerson({ id: p.id, liSlug: p.liSlug, igUser: p.igUser, liItem, igItem, origin: "live" });
   built.apify = p.apify;

@@ -99,7 +99,7 @@ export type Person = {
   location?: string;
   status: PersonStatus;
   error?: string;
-  apify?: { liRunId?: string; igRunId?: string };
+  apify?: { liRunId?: string; igRunId?: string; igPostsRunId?: string };
   source?: SourceData;
   analysis?: Analysis;
   dateIds?: string[];

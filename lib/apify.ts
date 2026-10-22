@@ -27,6 +27,14 @@ export async function startInstagram(usernames: string[]) {
   return run.id;
 }
 
+/** Posts-only fallback when the profile scraper's timeline request is rate-limited. */
+export async function startInstagramPosts(username: string) {
+  const run = await client()
+    .actor("apify/instagram-scraper")
+    .start({ directUrls: [`https://www.instagram.com/${username}/`], resultsType: "posts", resultsLimit: 12, addParentData: false });
+  return run.id;
+}
+
 export async function runInfo(runId: string) {
   const run = await client().run(runId).get();
   return { status: run?.status ?? "UNKNOWN", datasetId: run?.defaultDatasetId };
