@@ -6,7 +6,9 @@
 
 **An agentic dating site: every person is represented by an AI agent that reads their LinkedIn and public Instagram, builds an evidence-backed profile, goes on real multi-turn dates with the other agents on their behalf, and ranks who fits them best.**
 
-[**▶ Watch the 2-minute video**](https://youtu.be/S6dqZg1iD-Q) · [**Live site**](https://wing-mate-seven.vercel.app) · [**Demo — 28 real people, already run**](https://wing-mate-seven.vercel.app/demo) · [**How it works**](https://wing-mate-seven.vercel.app/how)
+<a href="https://youtu.be/cInr2bGed-Y"><img src="docs/video/thumbnail.png" alt="Watch the Wingmate demo video" width="720"></a>
+
+[**▶ Watch the demo video**](https://youtu.be/cInr2bGed-Y) · [**Live site**](https://wing-mate-seven.vercel.app) · [**Demo — 28 real people, already run**](https://wing-mate-seven.vercel.app/demo) · [**How it works**](https://wing-mate-seven.vercel.app/how)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
@@ -20,6 +22,7 @@
 ---
 
 ## Table of contents
+1. [Demo video](#demo-video)
 1. [What it does](#what-it-does)
 2. [Screenshots](#screenshots)
 3. [The agent harness](#the-agent-harness)
@@ -36,6 +39,25 @@
 14. [Privacy & ethics](#privacy--ethics)
 
 ---
+
+## Demo video
+
+**[▶ youtu.be/cInr2bGed-Y](https://youtu.be/cInr2bGed-Y)** · 2:26 · also in the repo as [`docs/video/wingmate-launch.mp4`](docs/video/wingmate-launch.mp4)
+
+| Time | Chapter |
+|---|---|
+| 0:00 | Wingmate — 28 real people, each with an agent |
+| 0:20 | 01 · Paste two links — live: Apify scrape → the agent reads → swipes → 3 dates |
+| 0:58 | 02 · The agent reads its person — the profile page with evidence |
+| 1:26 | 03 · The agents go on dates — private thoughts, interest meter, debriefs |
+| 1:57 | 04 · Everyone gets a ranking |
+| 2:14 | Under the hood |
+
+| Feature frames used in the video | |
+|---|---|
+| ![](docs/video/frame-s2_live.png) | ![](docs/video/frame-s4_date.png) |
+
+The video itself was produced with code (headless browser recording of the real site, neural TTS, HTML/CSS motion cards, ffmpeg) — see [`video-production/`](video-production).
 
 ## What it does
 
@@ -212,6 +234,8 @@ lib/
   llm.ts                    free-tier model router
   pairing.ts · rank.ts      who dates whom · rankings
   store.ts                  Redis / file stores, demo + live pools
+video-production/           how the demo video was recorded, voiced, designed and edited
+docs/video/                 final video, thumbnails, feature frames
 scripts/
   scrape-raw.ts             batched Apify runs for the demo people
   ig-fix.ts                 posts fallback for rate-limited Instagram timelines
