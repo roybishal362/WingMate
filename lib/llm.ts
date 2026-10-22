@@ -33,6 +33,9 @@ const GEMINI_MODELS: { id: string; rpm: number; tpm: number; chat: number; deep:
         { id: "gemini-3.5-flash", rpm: 5, tpm: 240000, chat: 1, deep: 0 },
         { id: "gemini-3.5-flash-lite", rpm: 10, tpm: 240000, chat: 0, deep: 1 },
         { id: "gemini-3.1-flash-lite", rpm: 15, tpm: 240000, chat: 2, deep: 3 },
+        { id: "gemini-3-flash-preview", rpm: 5, tpm: 240000, chat: 3, deep: 1 },
+        { id: "gemini-3.6-flash", rpm: 5, tpm: 240000, chat: 3, deep: 1 },
+        { id: "gemini-3.1-flash-lite-preview", rpm: 15, tpm: 240000, chat: 2, deep: 4 },
       ]
 );
 
