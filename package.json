@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "tsx scripts/seed.ts"
+    "typecheck": "tsc --noEmit",
+    "scrape": "tsx scripts/scrape-raw.ts",
+    "seed": "tsx scripts/seed.ts",
+    "test:live": "tsx scripts/test-live.ts"
   },
   "dependencies": {
     "@upstash/redis": "^1.39.0",
@@ -27,5 +30,10 @@
     "tailwindcss": "^3.4.19",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
+  },
+  "description": "Agentic dating site: AI agents read LinkedIn + Instagram (via Apify), date each other on their person's behalf, and rank who fits best.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
   }
 }

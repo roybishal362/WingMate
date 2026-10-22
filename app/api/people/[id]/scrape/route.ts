@@ -38,7 +38,7 @@ export async function POST(_: Request, { params }: { params: Promise<{ id: strin
 
   // Instagram sometimes refuses the timeline to the profile scraper: fetch posts with apify/instagram-scraper instead.
   const postCount = Array.isArray(igItem.latestPosts) ? (igItem.latestPosts as unknown[]).length : 0;
-  if (!postCount && Number(igItem.postsCount) > 0) {
+  if (!postCount) {
     if (!p.apify!.igPostsRunId) {
       p.apify!.igPostsRunId = await startInstagramPosts(p.igUser);
       await store.savePerson(p);
