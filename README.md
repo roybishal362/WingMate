@@ -60,6 +60,10 @@ The **demo** (`/demo`) is the finished example: **28 real people** (public creat
 |---|---|
 | ![Date](docs/screenshots/date.png) | ![Ranking](docs/screenshots/ranking.png) |
 
+| The finished 28-person demo |
+|---|
+| ![Demo](docs/screenshots/demo.png) |
+
 ## The agent harness
 
 Every person gets **one agent**. The agent's entire world is exactly two sources: the person's LinkedIn and the person's public Instagram. It never sees anything else.
