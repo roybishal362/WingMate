@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="h-display text-xl font-semibold">Wingmate</span>
             </Link>
             <Link href="/" className="rounded-lg px-3 py-1.5 text-muted hover:text-cream">Live</Link>
-            <Link href="/demo" className="rounded-lg px-3 py-1.5 text-muted hover:text-cream">Demo (25 people)</Link>
+            <Link href="/demo" className="rounded-lg px-3 py-1.5 text-muted hover:text-cream">Demo</Link>
             <Link href="/dates" className="rounded-lg px-3 py-1.5 text-muted hover:text-cream">Dates</Link>
             <Link href="/rankings" className="rounded-lg px-3 py-1.5 text-muted hover:text-cream">Rankings</Link>
             <Link href="/how" className="ml-auto rounded-lg px-3 py-1.5 text-muted hover:text-cream">How it works</Link>

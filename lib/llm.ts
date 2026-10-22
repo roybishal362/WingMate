@@ -30,9 +30,9 @@ const GEMINI_MODELS: { id: string; rpm: number; tpm: number; chat: number; deep:
         return { id, rpm: Number(rpm) || 10, tpm: 250000, chat: i, deep: i };
       })
     : [
-        { id: "gemini-2.5-flash", rpm: 9, tpm: 240000, chat: 2, deep: 0 },
-        { id: "gemini-2.5-flash-lite", rpm: 14, tpm: 240000, chat: 0, deep: 3 },
-        { id: "gemini-2.0-flash", rpm: 14, tpm: 900000, chat: 1, deep: 2 },
+        { id: "gemini-3.5-flash", rpm: 5, tpm: 240000, chat: 1, deep: 0 },
+        { id: "gemini-3.5-flash-lite", rpm: 10, tpm: 240000, chat: 0, deep: 1 },
+        { id: "gemini-3.1-flash-lite", rpm: 15, tpm: 240000, chat: 2, deep: 3 },
       ]
 );
 
@@ -124,6 +124,9 @@ function extractJSON(text: string): unknown {
 }
 
 function retryAfterMs(err: unknown): number {
+  const body = String((err as Error)?.message ?? "");
+  const rd = body.match(/retryDelay\W+(\d+(?:\.\d+)?)s/);
+  if (rd) return Math.min(Number(rd[1]) * 1000 + 500, 65_000);
   const h = (err as { headers?: unknown })?.headers as
     | { get?: (k: string) => string | null; [k: string]: unknown }
     | undefined;
