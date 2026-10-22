@@ -6,7 +6,7 @@
 
 **An agentic dating site: every person is represented by an AI agent that reads their LinkedIn and public Instagram, builds an evidence-backed profile, goes on real multi-turn dates with the other agents on their behalf, and ranks who fits them best.**
 
-[**Live site**](https://wing-mate-seven.vercel.app) · [**Demo — 28 real people, already run**](https://wing-mate-seven.vercel.app/demo) · [**How it works**](https://wing-mate-seven.vercel.app/how)
+[**▶ Watch the 2-minute video**](https://youtu.be/S6dqZg1iD-Q) · [**Live site**](https://wing-mate-seven.vercel.app) · [**Demo — 28 real people, already run**](https://wing-mate-seven.vercel.app/demo) · [**How it works**](https://wing-mate-seven.vercel.app/how)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
